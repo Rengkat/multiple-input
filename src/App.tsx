@@ -1,34 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState } from "react";
+import Select, { SelectOptions } from "./Select";
+
+const options = [
+  { label: "first", value: "1" },
+  { label: "second", value: "2" },
+  { label: "third", value: "3" },
+  { label: "fourth", value: "4" },
+  { label: "fifth", value: "5" },
+];
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [value, setValue] = useState<SelectOptions | undefined>(options[0]);
+  // const [multiple, setMultiple]= useState
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Select options={options} value={value} onchange={(o) => setValue(o)} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
